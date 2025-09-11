@@ -1,0 +1,9 @@
+#  
+#  Wavefront MTL
+#  
+#  
+
+newmtl g0
+map_Kd tex0.png
+#  
+
