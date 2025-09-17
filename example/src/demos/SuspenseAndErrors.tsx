@@ -11,12 +11,6 @@ import { Suspense, useDeferredValue } from 'react'
 import { Environment, OrbitControls, useProgress, Html, useTexture } from '@react-three/drei'
 import './suspense.css'
 
-const { NODE_ENV } = process.env
-// 是否本地开发环境
-const LOCAL_DEV = NODE_ENV && NODE_ENV !== 'production'
-console.log('NODE_ENV', NODE_ENV, LOCAL_DEV, process.env)
-
-const PUBLIC_PATH = LOCAL_DEV ? '/' : '/speedcat-nft/'
 // 带纹理的模型组件
 function TexturedModel({ objUrl, mtlUrl, textureUrl }) {
   // 先加载材质
@@ -128,6 +122,8 @@ function Loader() {
 // 主组件
 function ModelViewer() {
   const [model, setModel] = React.useState('model2')
+  const isDev = location?.host?.includes('127.0.0.1')
+  const PUBLIC_PATH = isDev ? '/' : '/speedcat-nft/'
 
   // 模型配置
   const models = {
