@@ -10,6 +10,13 @@ import { DDSLoader } from 'three-stdlib'
 import { Suspense, useDeferredValue } from 'react'
 import { Environment, OrbitControls, useProgress, Html, useTexture } from '@react-three/drei'
 import './suspense.css'
+
+const { NODE_ENV } = process.env
+// 是否本地开发环境
+const LOCAL_DEV = NODE_ENV && NODE_ENV !== 'production'
+console.log('NODE_ENV', NODE_ENV, LOCAL_DEV, process.env)
+
+const PUBLIC_PATH = LOCAL_DEV ? '/' : '/speedcat-nft/'
 // 带纹理的模型组件
 function TexturedModel({ objUrl, mtlUrl, textureUrl }) {
   // 先加载材质
@@ -108,25 +115,30 @@ function ModelViewer() {
   // 模型配置
   const models = {
     model1: {
-      obj: '/anan/model.obj',
-      mtl: '/anan/model.mtl',
+      obj: PUBLIC_PATH + 'anan/model.obj',
+      mtl: PUBLIC_PATH + 'anan/model.mtl',
       title: '阿南佛像',
       description: '这是一个阿南佛像',
-      texture: '/anan/tex0.png',
+      texture: PUBLIC_PATH + 'anan/tex0.png',
     },
     model2: {
-      obj: '/qingtong/model.obj',
-      mtl: '/qingtong/model.mtl',
+      obj: PUBLIC_PATH + 'qingtong/model.obj',
+      mtl: PUBLIC_PATH + 'qingtong/model.mtl',
       title: '青铜器',
       description: '这是一个青铜器',
-      texture: '/qingtong/tex0.png',
+      texture: PUBLIC_PATH + 'qingtong/tex0.png',
     },
     model3: {
-      obj: '/shanxi/Model.obj',
-      mtl: '/shanxi/Model.mtl',
+      obj: PUBLIC_PATH + 'shanxi/Model.obj',
+      mtl: PUBLIC_PATH + 'shanxi/Model.mtl',
       title: '山西',
       description: '山西博物馆',
-      texture: ['/shanxi/Model_0.jpg', '/shanxi/Model_1.jpg', '/shanxi/Model_2.jpg', '/shanxi/Model_3.jpg'],
+      texture: [
+        PUBLIC_PATH + 'shanxi/Model_0.jpg',
+        PUBLIC_PATH + 'shanxi/Model_1.jpg',
+        PUBLIC_PATH + 'shanxi/Model_2.jpg',
+        PUBLIC_PATH + 'shanxi/Model_3.jpg',
+      ],
     },
   }
 
