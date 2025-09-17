@@ -52,7 +52,7 @@ export default function App() {
       <React.Suspense fallback={<Loading />}>
         <SuspenseAndErrors />
       </React.Suspense>
-      {dev === null && <Dots />}
+      {/* {dev === null && <Dots />} */}
     </Page>
   )
 }

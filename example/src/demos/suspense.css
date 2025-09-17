@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 20px;
+  background-color: #0c1b33;
 }
 
 .header {
@@ -34,24 +34,28 @@ body {
   margin-bottom: 10px;
   color: #4cc9f0;
   text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+  padding: 0 25px;
 }
 
 .header p {
   font-size: 1.2rem;
   color: #a0a0b8;
+  padding: 0 25px;
 }
 
 .viewer-container {
-  flex: 1;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   position: relative;
+  aspect-ratio: 1/1;
 }
 
 .controls {
+  position: absolute;
+  bottom: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
   gap: 15px;
   margin-top: 20px;
   flex-wrap: wrap;
