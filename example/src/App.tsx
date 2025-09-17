@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { useErrorBoundary } from 'use-error-boundary'
 import { Redirect, Route, useRoute } from 'wouter'
-
+import SuspenseAndErrors from './demos/SuspenseAndErrors'
 import { DemoPanel, Dot, Error, Loading, Page } from './components'
 import './styles.css'
 
 import * as demos from './demos'
 
-const DEFAULT_COMPONENT_NAME = 'Portals'
+const DEFAULT_COMPONENT_NAME = 'SuspenseAndErrors'
 const visibleComponents: any = Object.entries(demos).reduce((acc, [name, item]) => ({ ...acc, [name]: item }), {})
 
 function ErrorBoundary({ children, fallback, name }: any) {
@@ -50,10 +50,7 @@ export default function App() {
   return (
     <Page>
       <React.Suspense fallback={<Loading />}>
-        <Route path="/" children={<Redirect to={`/demo/${DEFAULT_COMPONENT_NAME}`} />} />
-        <Route path="/demo/:name">
-          <Demo />
-        </Route>
+        <SuspenseAndErrors />
       </React.Suspense>
       {dev === null && <Dots />}
     </Page>
